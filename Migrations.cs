@@ -56,11 +56,3 @@ public class Migrations
         return 0;
     }
 }
-
-KDG.Migrations.Migrations migrations = new Migrations(
-    new MigrationConfig(
-        "your-database-connection-string",
-        "your-local-path-to-migrations-folder"
-    )
-)
-await migrations.Migrate()
