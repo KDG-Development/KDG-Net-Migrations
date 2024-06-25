@@ -1,12 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
    <PropertyGroup>
-     <PackageId>KDG.Net.Migrations</PackageId>
+     <PackageId>KDG-Net-Migrations</PackageId>
      <Version>0.0.1</Version>
      <Authors>Kyle David Group</Authors>
      <Company>Kyle David Group</Company>
      <Description>A wrapper for common migration implementations</Description>
      <PackageTags>migrations</PackageTags>
+     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+     <PackageReadmeFile>README.md</PackageReadmeFile>
    </PropertyGroup>
 
   <PropertyGroup>
@@ -14,6 +16,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="LICENSE" Pack="true" PackagePath=""/>
+    <None Include="README.md" Pack="true" PackagePath=""/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="dbup" Version="5.0.8" />
