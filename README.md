@@ -10,7 +10,7 @@ KDG.Migrations.Migrations migrations = new Migrations(
         'path-to-migrations-folder'
     )
 )
-await migrations.Migrate()
+return await migrations.Migrate()
 ```
 
 ## Support
