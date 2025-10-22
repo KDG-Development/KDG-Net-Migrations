@@ -1,17 +1,59 @@
-# Getting started
-- (Optional) Create a new project in your repository
-- Create a new folder containing your migration SQL files
-- Execute the following
+# KDG.Net.Migrations
 
+A simple wrapper around DbUp for managing database migrations with support for PostgreSQL and SQL Server.
+
+## Supported Databases
+
+- PostgreSQL
+- SQL Server
+
+## Getting Started
+
+1. (Optional) Create a new project in your repository
+2. Create a new folder containing your migration SQL files
+3. Execute the following code:
+
+### PostgreSQL Example
+
+```csharp
+using KDG.Migrations;
+
+var config = new MigrationConfig(
+    KDG.Migrations.DatabaseType.PostgreSQL,
+    "Host=localhost;Database=mydb;Username=user;Password=pass",
+    "path-to-migrations-folder"
+);
+
+var migrations = new Migrations(config);
+int result = migrations.Migrate();
 ```
-KDG.Migrations.Migrations migrations = new Migrations(
-    new MigrationConfig(
-        'database-connection-string',
-        'path-to-migrations-folder'
-    )
-)
-return await migrations.Migrate()
+
+### SQL Server Example
+
+```csharp
+using KDG.Migrations;
+
+var config = new MigrationConfig(
+    KDG.Migrations.DatabaseType.SqlServer,
+    "Server=localhost;Database=mydb;User Id=user;Password=pass;",
+    "path-to-migrations-folder"
+);
+
+var migrations = new Migrations(config);
+int result = migrations.Migrate();
 ```
+
+## Migration Files
+
+- Create SQL migration files in your migrations folder
+- Files are executed in alphabetical order (naming convention: `001_Description.sql`, `002_NextMigration.sql`, etc.)
+- Subdirectories are automatically scanned and included
+- All migrations run within a transaction and will rollback on failure
+
+## Return Values
+
+- `0` - Success
+- `-1` - Migration failed
 
 ## Support
 
